@@ -3,6 +3,7 @@ import WeatherCard from '../../components/WeatherCard/WeatherCard'
 import { Grid, CssBaseline, Button } from '@material-ui/core';
 import moment from 'moment';
 import DayCard from '../../components/DayCard/DayCard'
+//import Modal from '../../components/Modal/Modal'
 //import 'moment/locale/es';
 
 moment.locale('es');
@@ -119,6 +120,8 @@ function App() {
   }
 
 
+
+
   // un if, cuando days sea true se acciona 'days &&'
   return (
 
@@ -146,11 +149,11 @@ function App() {
       </div>
       <div>
         {dia &&
-        <DayCard
+          <DayCard
 
-          dia={dia}
-        />}
-
+            dia={dia}
+          />}
+        
       </div>
 
 

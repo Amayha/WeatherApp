@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, makeStyles } from '@material-ui/core';
+import { Card, CardContent, makeStyles, Button } from '@material-ui/core';
 
 
 
@@ -7,47 +7,47 @@ import { Card, CardContent, makeStyles } from '@material-ui/core';
 function WeatherCard(props) {
     const classes = useStyles();
     //var today;
-   /* switch (props.dayI) {
+    /* switch (props.dayI) {
+ 
+         case 1:
+             today = 'Mon'
+             break;
+ 
+         case 2:
+             today = 'Tue'
+             break;
+ 
+         case 3:
+             today = 'Wed'
+             break;
+ 
+         case 4:
+             today = 'Tru'
+             break;
+ 
+         case 5:
+             today = 'Fri'
+             break;
+ 
+         case 6:
+             today = 'Sat'
+             break;
+ 
+         case 7:
+             today = 'Sun'
+             break;
+ 
+ 
+ 
+ 
+     }*/
 
-        case 1:
-            today = 'Mon'
-            break;
 
-        case 2:
-            today = 'Tue'
-            break;
-
-        case 3:
-            today = 'Wed'
-            break;
-
-        case 4:
-            today = 'Tru'
-            break;
-
-        case 5:
-            today = 'Fri'
-            break;
-
-        case 6:
-            today = 'Sat'
-            break;
-
-        case 7:
-            today = 'Sun'
-            break;
-
-
-
-
-    }*/
-
-   
     const handleClick = () => {
         props.action(props.day);
     }
- 
-    
+
+
 
     /*
     if (today === props.day)
@@ -63,6 +63,7 @@ function WeatherCard(props) {
         );
     else*/
 
+
     return (<Card>
         <CardContent className={classes.content}>
             <h3 className={classes.title}>{props.day}</h3>
@@ -70,7 +71,7 @@ function WeatherCard(props) {
             <p className={classes.info}>
                 <span>{props.min}</span> {props.max}
             </p>
-            <button onClick={handleClick} >Ver mas</button>
+            <Button className={classes.button} onClick={handleClick} >Ver mas</Button>
         </CardContent>
     </Card>
     );
@@ -113,7 +114,19 @@ const useStyles = makeStyles(theme => ({
         '& span': {
             color: theme.palette.grey[500],
         }
-    }
+    },
+
+    button: {
+        margin: theme.spacing(1),
+        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        border: 0,
+        borderRadius: 3,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        color: 'white',
+        height: 48,
+        padding: '0 30px',
+    },
+
 
 }));
 
