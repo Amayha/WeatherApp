@@ -2,7 +2,8 @@ import React from 'react';
 import WeatherCard from '../../components/WeatherCard/WeatherCard'
 import { Grid, CssBaseline, Button } from '@material-ui/core';
 import moment from 'moment';
-import 'moment/locale/es';
+import DayCard from '../../components/DayCard/DayCard'
+//import 'moment/locale/es';
 
 moment.locale('es');
 
@@ -67,9 +68,23 @@ const days= [
 ]*/
 
 
+
 function App() {
 
+  const prueba = (fecha) => {
+    days.forEach(element => {
+      if (element.day === fecha) {
+        console.log('encontrado' + fecha + ' ' + element.day);
+        setDia(element);
+
+      }
+    });
+
+  }
+
   const [days, setDays,] = React.useState([]);
+  const [dia, setDia] = React.useState({});
+  console.log(dia);
 
   const handleGetWeather = () => {
     console.log('get weather');
@@ -88,41 +103,53 @@ function App() {
           return {
             day: moment.unix(elem.dt).format('ddd [/] D [/] MM [/]YYYY'),
             icon: `https://openweathermap.org/img/wn/${elem.weather[0].icon}.png`,
-            min: Math.round( elem.main.temp_min -273.15) + '°',
-            max:  Math.round( elem.main.temp_max -273.15) + '°',
+            min: Math.round(elem.main.temp_min - 273.15) + '°',
+            max: Math.round(elem.main.temp_max - 273.15) + '°',
+            presion: Math.round(elem.main.pressure),
+            mar: Math.round(elem.main.sea_level),
           }
 
         });
-
-        
-
         setDays(list);
         console.log(days);
       });
   }
+
+
   // un if, cuando days sea true se acciona 'days &&'
   return (
+
+
     <div>
 
       <Button onClick={handleGetWeather} variant="contained" color="primary">
         Get weather Info
       </Button>
 
-      <Grid container >
+      <div>
+        <Grid container >
 
-        {days && days.map((item) => <Grid item md={3} key={item.day}>
-          <WeatherCard
-            day={item.day}
-            icon={item.icon}
-            min={item.min}
-            max={item.max}
-            dayI={item.dayI}
-          />
-        </Grid>)}
+          {days && days.map((item) => <Grid item md={2} key={item.day}>
+            <WeatherCard
+              day={item.day}
+              icon={item.icon}
+              min={item.min}
+              max={item.max}
+              dayI={item.dayI}
+              action={prueba}
+            />
+          </Grid>)}
+        </Grid>
+      </div>
+      <div>
+        {dia &&
+        <DayCard
 
+          dia={dia}
+        />}
 
+      </div>
 
-      </Grid>
 
       <CssBaseline />
     </div>

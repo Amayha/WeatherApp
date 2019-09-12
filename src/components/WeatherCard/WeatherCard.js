@@ -6,9 +6,8 @@ import { Card, CardContent, makeStyles } from '@material-ui/core';
 
 function WeatherCard(props) {
     const classes = useStyles();
-    var today;
-
-    switch (props.dayI) {
+    //var today;
+   /* switch (props.dayI) {
 
         case 1:
             today = 'Mon'
@@ -38,8 +37,19 @@ function WeatherCard(props) {
             today = 'Sun'
             break;
 
-    }
 
+
+
+    }*/
+
+   
+    const handleClick = () => {
+        props.action(props.day);
+    }
+ 
+    
+
+    /*
     if (today === props.day)
         return (<Card>
             <CardContent className={classes.content}>
@@ -51,17 +61,19 @@ function WeatherCard(props) {
             </CardContent>
         </Card>
         );
-    else
-        return (<Card>
-            <CardContent className={classes.content}>
-                <h3 className={classes.title}>{props.day}</h3>
-                <img src={props.icon} alt='' />
-                <p className={classes.info}>
-                    <span>{props.min}</span> {props.max}
-                </p>
-            </CardContent>
-        </Card>
-        );
+    else*/
+
+    return (<Card>
+        <CardContent className={classes.content}>
+            <h3 className={classes.title}>{props.day}</h3>
+            <img src={props.icon} alt='' />
+            <p className={classes.info}>
+                <span>{props.min}</span> {props.max}
+            </p>
+            <button onClick={handleClick} >Ver mas</button>
+        </CardContent>
+    </Card>
+    );
 
 
 }
@@ -91,7 +103,7 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-       // margin: 20,
+        // margin: 20,
     },
     info: {
         margin: 0,
