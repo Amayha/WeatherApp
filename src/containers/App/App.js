@@ -105,8 +105,11 @@ function App() {
             icon: `https://openweathermap.org/img/wn/${elem.weather[0].icon}.png`,
             min: Math.round(elem.main.temp_min - 273.15) + '°',
             max: Math.round(elem.main.temp_max - 273.15) + '°',
-            presion: Math.round(elem.main.pressure),
+            humedad: Math.round(elem.main.humidity) + '%',
             mar: Math.round(elem.main.sea_level),
+            descri: (elem.weather[0].description),
+            vel: (elem.wind.speed) + '  Kms/H',
+            deg: (elem.wind.deg) + '°',
           }
 
         });
